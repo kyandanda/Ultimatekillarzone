@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ultimatekillarzone Pool — Pro Matches & Shop</title>
+<style>
+  /* ========== Reset & base ========== */
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:#ffffff; /* WHITE background as requested */
+    color:#111;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+
+  a { color:inherit; text-decoration:none; }
+
+  /* ========== Header / Nav ========== */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 28px;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.9));
+    z-index:50;
+  }
+
+  .brand {
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .logo {
+    width:44px;
+    height:44px;
+    background:#111;
+    color:#fff;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    letter-spacing:0.6px;
+    font-size:18px;
+  }
+  .brand h1{
+    margin:0;
+    font-size:18px;
+    color:#111;
+  }
+
+  nav{display:flex; gap:18px; align-items:center;}
+  nav a{
+    padding:8px 12px;
+    border-radius:6px;
+    color:#111;
+    font-weight:600;
+    transition:all .18s ease;
+  }
+  nav a:hover{
+    background:#f8f8f8;
+    color:#e53935;
+  }
+  .cta {
+    background:#e53935;
+    color:#fff;
+    padding:9px 14px;
+    border-radius:8px;
+    font-weight:700;
+  }
+  .cta:hover { filter:brightness(.95); transform:translateY(-1px); }
+
+  /* ========== Hero ========== */
+  .hero{
+    padding:44px 28px;
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:28px;
+    align-items:center;
+  }
+  .hero-left h2{
+    margin:0 0 14px 0;
+    font-size:34px;
+    letter-spacing:-0.6px;
+    color:#111;
+  }
+  .hero-left p{ margin:0 0 18px 0; color:#444; font-size:16px; }
+  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-outline{
+    padding:10px 16px;
+    border-radius:8px;
+    border:1px solid #e6e6e6;
+    background:transparent;
+    font-weight:700;
+  }
+  .hero-card{
+    border:1px solid #eee;
+    padding:14px;
+    border-radius:10px;
+    box-shadow:0 8px 30px rgba(16,24,40,0.04);
+    background: #fff;
+  }
+  .hero-card h4 { margin:0 0 8px 0; font-size:16px; color:#111; }
+  .meta { color:#666; font-size:14px; }
+
+  /* ========== Sections ========== */
+  section{ padding:36px 28px; }
+  .section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .section-title h3{ margin:0; font-size:20px; color:#111; }
+  .section-title a{ color:#e53935; font-weight:700; font-size:13px; }
+
+  .grid{
+    display:grid;
+    gap:18px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Cards */
+  .card{
+    background:#fff;
+    border:1px solid #efefef;
+    border-radius:10px;
+    overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(16,24,40,0.08); }
+  .card img{ width:100%; display:block; height:200px; object-fit:cover; }
+  .card-body{ padding:14px; }
+  .price { color:#e53935; font-weight:800; font-size:16px; margin-top:8px; }
+  .small { color:#666; font-size:13px; }
+
+  /* Match / stream cards */
+  .stream-thumb{
+    width:100%;
+    height:220px;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .stream-thumb iframe{ width:100%; height:100%; border:0; display:block; }
+
+  /* News list */
+  .news-list{ display:flex; flex-direction:column; gap:12px; }
+  .news-item{ padding:14px; border-radius:8px; border:1px solid #f2f2f2; display:flex; gap:12px; align-items:flex-start; }
+  .news-item img{ width:110px; height:70px; object-fit:cover; border-radius:6px; }
+
+  /* Footer */
+  footer{
+    border-top:1px solid #eee;
+    padding:22px 28px;
+    color:#666;
+    font-size:14px;
+  }
+
+  /* ========== Responsive ========== */
+  @media (max-width: 1000px){
+    .hero{ grid-template-columns:1fr; }
+    .grid{ grid-template-columns: repeat(2, 1fr); }
+    .stream-thumb{ height:200px; }
+  }
+
+  @media (max-width: 680px){
+    nav{ display:none; }
+    .grid{ grid-template-columns: 1fr; }
+    header{ padding:12px 16px; }
+    .hero{ padding:28px 16px; }
+  }
+
+  /* subtle utilities */
+  .muted{ color:#6b6b6b; font-size:13px; }
+  .center{ text-align:center; }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="logo">UKZ</div>
+      <h1>Ultimatekillarzone</h1>
+    </div>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#news">News</a>
+      <a href="#matches">Matches</a>
+      <a class="cta" href="#shop">Visit Shop</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <h2 id="hero-heading">World-class pool coverage, gear & live matches</h2>
+        <p>Professional match streaming, premium billiard gear, and tournament news — built for players and fans. Presenting a crisp, investor-ready look for Ultimatekillarzone.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#matches">Watch Live</a>
+          <a class="btn-outline" href="#news">Latest News</a>
+          <a class="btn-outline" href="#shop">Shop Gear</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Quick match summary">
+        <h4>Next Big Match</h4>
+        <div class="muted">Grand Championship — Semi Final</div>
+        <div style="margin:12px 0; font-weight:800; font-size:18px;">Team A vs Team B</div>
+        <div class="small">Streaming live — today at 20:00</div>
+        <div style="margin-top:12px">
+          <button class="cta">Set Reminder</button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop" aria-labelledby="shop-heading">
+      <div class="section-title">
+        <h3 id="shop-heading">Shop — Pro Gear</h3>
+        <a href="#shop">Explore all gear →</a>
+      </div>
+
+      <div class="grid">
+        <!-- NOTE: Replace the src paths with your local image paths or public URLs.
+             Example filenames (the images you uploaded): 
+             images/cue1.jpg  images/cue2.jpg  images/table1.jpg
+        -->
+        <article class="card" aria-label="Pro Cue">
+          <img src="images/cue1.jpg" alt="Professional Pool Cue — Classic">
+          <div class="card-body">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Classic Pro Cue</strong>
+              <div class="price">$129</div>
+            </div>
+            <div class="small">16oz, full maple shaft, tournament grade tip</div>
+            <div style="margin-top:12px">
+              <button>Add to cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" aria-label="Color Cue">
+          <img src="images/cue2.jpg" alt="Color Pattern Pool Cue">
+          <div class="card-body">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Signature Color Cue</strong>
+              <div class="price">$149</div>
+            </div>
+            <div class="small">Custom lacquer finish, pro balance</div>
+            <div style="margin-top:12px">
+              <button>Add to cart</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" aria-label="Table">
+          <img src="images/table1.jpg" alt="Professional Billiard Table">
+          <div class="card-body">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Deluxe Tournament Table</strong>
+              <div class="price">$1,799</div>
+            </div>
+            <div class="small">Regulation size, slate bed, premium felt</div>
+            <div style="margin-top:12px">
+              <button>Add to cart</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" aria-labelledby="news-heading">
+      <div class="section-title">
+        <h3 id="news-heading">Latest News</h3>
+        <a href="#news">See all news →</a>
+      </div>
+
+      <div class="news-list">
+        <div class="news-item">
+          <img src="images/table1.jpg" alt="Championship">
+          <div>
+            <strong>Grand Championship announced</strong>
+            <div class="muted">New prize pool & qualifiers revealed for the global event.</div>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <img src="images/cue1.jpg" alt="Spotlight">
+          <div>
+            <strong>Player Spotlight: Rising Star</strong>
+            <div class="muted">An inside look at the training routine that took them to the top.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATCHES / STREAMING -->
+    <section id="matches" aria-labelledby="matches-heading">
+      <div class="section-title">
+        <h3 id="matches-heading">Match Streaming</h3>
+        <a href="#matches">Past broadcasts →</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr; gap:18px;">
+        <!-- Live stream 1 (You provided) -->
+        <div class="card">
+          <div class="stream-thumb">
+            <!-- Embedded YouTube live 1 -->
+            <iframe src="https://www.youtube.com/embed/F_J9JuFHIfo" title="Live Match 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <strong>Live Coverage — Table 1</strong>
+            <div class="muted">Primary broadcast feed</div>
+            <div style="margin-top:12px">
+              <button class="cta">Watch Live</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live stream 2 (You provided) -->
+        <div class="card">
+          <div class="stream-thumb">
+            <!-- Embedded YouTube live 2 -->
+            <iframe src="https://www.youtube.com/embed/0vOg8AAwRgQ" title="Live Match 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="card-body">
+            <strong>Live Coverage — Table 2</strong>
+            <div class="muted">Secondary feed / alternate angle</div>
+            <div style="margin-top:12px">
+              <button class="cta">Watch Live</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Match schedule -->
+      <div style="margin-top:20px;">
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px;padding:14px;border:1px solid #f1f1f1;border-radius:8px;">
+            <div style="font-weight:800">20:00 — Semi Final</div>
+            <div class="muted">Arena A — Live on Table 1</div>
+          </div>
+          <div style="flex:1;min-width:220px;padding:14px;border:1px solid #f1f1f1;border-radius:8px;">
+            <div style="font-weight:800">22:00 — Consolation Match</div>
+            <div class="muted">Arena B — Live on Table 2</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <strong>Ultimatekillarzone</strong>
+        <div class="muted">Pro pool coverage • Gear • Events</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="muted">© 2025 Ultimatekillarzone</div>
+        <div style="border-left:1px solid #eee;padding-left:12px;" class="muted">Contact: hello@ultimatekillarzone.com</div>
+      </div>
+    </div>
+  </footer>
+
+  <!--
+    NOTES:
+    1) Replace image src values with your local or hosted image URLs:
+       - images/cue1.jpg   (e.g. your uploaded cue photo)
+       - images/cue2.jpg   (second cue)
+       - images/table1.jpg (pool table)
+    2) The YouTube embeds point to the live video IDs you provided.
+    3) This is a static, HTML-only presentation template optimized for investor demos.
+  -->
+</body>
+</html>
